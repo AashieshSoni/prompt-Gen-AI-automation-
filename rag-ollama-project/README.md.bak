@@ -1,0 +1,96 @@
+1. Setup Instructions
+Step 1: Create project folder
+mkdir rag-ollama-project
+cd rag-ollama-project
+
+Step 2: Create virtual environment
+python -m venv .venv
+source .venv/bin/activate     # Linux / Mac
+# OR
+# .venv\Scripts\activate      # Windows
+
+Step 3: Install Ollama Python SDK
+pip install ollama chromadb
+
+Step 4: Pull required Ollama models
+ollama pull nomic-embed-text
+ollama pull llama3.1           # or your preferred LLM
+
+Step 5: Run the App
+python rag_app.py
+
+Step : 6
+Documents indexed successfully.
+
+RAG Response:
+RAG (Retrieval Augmented Generation) combines search with LLMs to improve accuracy...
+
+
+ecommendation Based on “Automation / REST API Testing” Use Case
+
+If you're building a testable RAG API (for automated testing), anarojoecheburua/RAG-with-Langchain-and-FastAPI or AshishSinha5/rag_api are probably the most straightforward.
+
+If you want something more “production/hybrid search” ready, Hybrid-Search-RAG (kolhesamiksha) or Hybrid-Search-For-Rag (Syed007Hassan) are strong picks.
+
+For cloud-based, enterprise-style RAG, the Azure Samples repo is a very good reference.
+
+
+
+Here are some existing GitHub repositories for RAG (Retrieval-Augmented Generation) in Python that expose REST APIs (or can be adapted for testing automation). Depending on your exact use case (local LLM, cloud LLM, vector store), some will be more relevant than others.
+Existing GitHub Repos for Python RAG + REST API
+
+anarojoecheburua / RAG-with-Langchain-and-FastAPI
+
+Uses LangChain, FastAPI for API endpoints, text splitting, embedding, retrieval + generation. 
+GitHub
+
+Good for building a scalable RAG backend service.
+
+AshishSinha5 / rag_api
+
+Retrieval Augmented Generation with LLMs + FastAPI. 
+GitHub
+
+Designed for Q&A over custom documents using a REST API.
+
+Azure-Samples / app-service-rag-openai-ai-search-python
+
+Demonstrates RAG using Azure OpenAI, Azure AI Search, and FastAPI, deployable to Azure App Service. 
+GitHub
+
+Good reference if you're okay with Azure services, or want a production-oriented example.
+
+kolhesamiksha / Hybrid-Search-RAG
+
+A Python package for hybrid RAG. Includes a FastAPI REST API in its example. 
+GitHub
+
+Combines vector search + other retrieval mechanisms.
+
+Syed007Hassan / Hybrid-Search-For-Rag
+
+Demonstrates hybrid search (vector + keyword) for RAG using Postgres + PgVector, with a FastAPI app. 
+GitHub
+
+Useful if you want to use Postgres as your vector DB.
+
+hritikpal671 / RAG-using-FastAPI
+
+RAG chatbot backend in Python, with FastAPI and LangChain + FAISS. 
+GitHub
+
+Has also a Streamlit frontend integrated — handy for testing UIs + APIs.
+
+tansut / Rag-LangChain-Chainlit-FastAPI
+
+Chatbot app built with LangChain, FastAPI, Chainlit, and FAISS. 
+GitHub
+
+Chainlit can help in building conversational UI, but you can use it purely as a backend API too.
+
+sinanuozdemir / oreilly-retrieval-augmented-gen-ai
+
+A more advanced setup combining RAG + agents + real-time data. 
+GitHub
+
+Good for more dynamic or production-grade systems.

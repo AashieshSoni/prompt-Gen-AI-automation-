@@ -1,0 +1,63 @@
+Here are some existing GitHub repositories for RAG (Retrieval-Augmented Generation) in Python that expose REST APIs (or can be adapted for testing automation). Depending on your exact use case (local LLM, cloud LLM, vector store), some will be more relevant than others.
+
+🔍 Existing GitHub Repos for Python RAG + REST API
+
+anarojoecheburua/RAG-with-Langchain-and-FastAPI
+
+Uses LangChain, FastAPI for API endpoints, text splitting, embedding, retrieval + generation. 
+GitHub
+
+Good for building a scalable RAG backend service.
+
+AshishSinha5/rag_api
+
+Retrieval Augmented Generation with LLMs + FastAPI. 
+GitHub
+
+Designed for Q&A over custom documents using a REST API.
+
+Azure-Samples/app-service-rag-openai-ai-search-python
+
+Demonstrates RAG using Azure OpenAI, Azure AI Search, and FastAPI, deployable to Azure App Service. 
+GitHub
+
+Good reference if you're okay with Azure services, or want a production-oriented example.
+
+kolhesamiksha/Hybrid-Search-RAG
+
+A Python package for hybrid RAG. Includes a FastAPI REST API in its example. 
+GitHub
+
+Combines vector search + other retrieval mechanisms.
+
+Syed007Hassan/Hybrid-Search-For-Rag
+
+Demonstrates hybrid search (vector + keyword) for RAG using Postgres + PgVector, with a FastAPI app. 
+GitHub
+
+Useful if you want to use Postgres as your vector DB.
+
+hritikpal671/RAG-using-FastAPI
+
+RAG chatbot backend in Python, with FastAPI and LangChain + FAISS. 
+GitHub
+
+Has also a Streamlit frontend integrated — handy for testing UIs + APIs.
+
+tansut/Rag-LangChain-Chainlit-FastAPI
+
+Chatbot app built with LangChain, FastAPI, Chainlit, and FAISS. 
+GitHub
+
+Chainlit can help in building conversational UI, but you can use it purely as a backend API too.
+
+sinanuozdemir/oreilly-retrieval-augmented-gen-ai
+
+1. A more advanced setup combining RAG + agents + real-time data. 
+GitHub
+
+2. Good for more dynamic or production-grade systems.
+
+
+
+Example to generate -minimal RAG example using Ollama + ChromaDB + python-dotenv
