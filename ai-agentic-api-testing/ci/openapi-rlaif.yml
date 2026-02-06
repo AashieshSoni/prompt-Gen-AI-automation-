@@ -1,0 +1,29 @@
+name: RLAIF API Self-Improvement
+
+on:
+  push:
+    paths:
+      - "schemas/openapi.yaml"
+
+jobs:
+  improve-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run RLAIF loop
+        run: |
+          python -c "
+          from agents.self_improver import run_self_improvement_iteration
+          print(run_self_improvement_iteration(open('schemas/openapi.yaml').read()))
+          "
