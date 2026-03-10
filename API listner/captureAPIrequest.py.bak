@@ -1,0 +1,64 @@
+#code demonstrates how to use Playwright's page.on("request") event to listen for and capture XHR request details.
+#pip install playwright
+## Run this command to install the necessary browser binaries
+#playwright install
+
+import asyncio
+
+from playwright.async_api import async_playwright
+
+async def capture_network_data():
+    async with async_playwright() as p:
+        # Launch the browser (Chromium, Firefox, or WebKit)
+        browser = await p.chromium.launch(headless=True)
+        page = await browser.new_page()
+
+        print("Navigating to URL...")
+        # Navigate to the page that triggers the XHR request
+        await page.goto('https://example.com')
+        
+        # --- 1. Set up the Request Listener ---
+        # This function will be called for every request made by the page
+        def handle_request(request):
+            # Check the request type and URL (XHR filter)
+            if request.resource_type == 'xhr' and 'api/data' in request.url:
+                print("\n--- Captured XHR Request ---")
+                print(f"URL: {request.url}")
+                print(f"Method: {request.method}")
+
+                # --- 2. Capture Request Headers ---
+                print("Request Headers:")
+                # request.headers is a dictionary
+                headers = request.headers
+                for header, value in headers.items():
+                    # Print relevant headers
+                    if header.lower() in ['user-agent', 'content-type', 'authorization']:
+                        print(f"  {header}: {value}")
+
+                # --- 3. Capture Request Payload (Body) ---
+                try:
+                    # request.post_data is the payload/body
+                    payload = request.post_data
+                    if payload:
+                        print("\nRequest Payload (Body):")
+                        print(payload[:500]) # Print first 500 characters
+                    else:
+                        print("Request Payload (Body): [None]")
+                except Exception:
+                    # Catch cases where post_data isn't available (e.g., GET requests)
+                    print("Request Payload (Body): [Not available/GET request]")
+        
+        # Register the listener
+        page.on("request", handle_request)
+        
+        # --- 4. Perform actions to trigger the XHR ---
+        # Example: Click a button that initiates a data fetch.
+        # await page.click('#loadDataButton')
+        
+        # Wait a few seconds for the network requests to complete
+        await asyncio.sleep(5) 
+
+        await browser.close()
+
+if __name__ == "__main__":
+    asyncio.run(capture_network_data())
